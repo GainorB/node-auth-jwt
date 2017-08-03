@@ -2,7 +2,7 @@ const db = require('../config/config');
 const bcrypt = require('bcryptjs');
 
 // EMPTY USER OBJECT
-// USED FOR EXPORTING THE METHODS BELOW
+// USED FOR EXPORTING THE FUNCTIONS BELOW
 const User = {};
 
 // FIND USER BY USERNAME

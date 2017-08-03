@@ -27,13 +27,13 @@ In request, send "Authorization" Header with the token to:
 
 Use this in your route to authenticate any request:
 ```javascript
-router.get('/[endpoint]', passport.authenticate('jwt', { session: false }), ((req, res, next) => {
+router.get('/[endpoint]', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     // IF YOU GET HERE, IT MEANS THE TOKEN IS AUTHENTICATED
     // DO SOMETHING
 });
 ```
 
-#### DOCUMENTATION
+### DOCUMENTATION
 1. Json Web Token: https://github.com/auth0/node-jsonwebtoken
 2. Passport-JWT: https://github.com/themikenicholson/passport-jwt
 3. Passport: https://github.com/jaredhanson/passport 
