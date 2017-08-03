@@ -42,7 +42,7 @@ router.get('/[endpoint]', passport.authenticate('jwt', { session: false }), (req
 1. Git clone this project
 2. Open up Terminal or Command line
 3. Navigate to the directory where the project was cloned to
-4. Run this command: psql -f ../config/db/schema.sql
+4. Run this command: psql -f ./config/db/schema.sql
 5. This command will create a PostgreSQL database along with the tables
 6. Setup environment variables:
     * Create .env file in your project root with these two variables
