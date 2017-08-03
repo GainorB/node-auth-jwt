@@ -48,7 +48,7 @@ router.get('/[endpoint]', passport.authenticate('jwt', { session: false }), (req
     * Create .env file in your project root with these two variables
 ```
 DATABASE_URL=postgres://localhost:5432/userauth_app
-SECRET_KEY=28djisjacknc8913!@##^$%dasdfs!@
+SECRET_KEY=38219ejhhsd@#$%$@^$#%Cdviroirer
 ```
 7. To run the application, you need to install the dependencies, run this command: npm install --save
 8. To start the application, run this command: npm start
