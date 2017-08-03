@@ -13,36 +13,34 @@ router.post('/new', (req, res, next) => {
     // INSERT USER DATA INTO AN OBJECT
     let newUser = { username, email, password };
 
-    // CHECK IF USER IS VALID: IF ALL FIELDS ARE COMPLETED
+    // CHECK IF USERNAME IS VALID (NOT EMPTY)
     if(!username){
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: "Username is required"
         });
-        return;
     }
+    // CHECK IF EMAIL IS VALID (NOT EMPTY)
     if(!email){
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: "Email is required"
         });
-        return;
     }
+    // CHECK IF PASSWORD IS VALID (NOT EMPTY)
     if(!password){
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: "Password is required"
         });
-        return;
     }
 
-    // CHECK EMAIL IF ITS VALID
+    // CHECK EMAIL IF IT IS FORMATTED CORRECTLY 
     if(!User.validateEmail(email)){
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: 'Please use a valid email'
         });
-        return false;
     } else {
 
         // USE MODEL TO REGISTER A NEW USER
@@ -57,15 +55,14 @@ router.post('/new', (req, res, next) => {
                         email: user.email
                     } 
                 });
-            }).catch(err => {
-                console.error(err);
-            });
+            }).catch(err => console.error(err));
     }
 });
 
 // PROFILE
 // PROTECTED ROUTE
-router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+// IF TOKEN IS VALID THE USER WILL BE ABLE TO SEE THEIR PROFILE INFORMATION
+router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     res.status(200).json({ 
         user: {
             id: req.user.id,
@@ -81,20 +78,19 @@ router.post('/authenticate', (req, res, next) => {
     // EXTRACT FORM DATA
     const { username, password } = req.body;
 
-    // CHECK IF USER IS VALID: IF ALL FIELDS ARE COMPLETED
+    // CHECK IF USERNAME IS VALID (NOT EMPTY)
     if(!username){
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: "Username is required"
         });
-        return;
     }
+    // CHECK IF PASSWORD IS VALID (NOT EMPTY)
     if(!password){
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: "Password is required"
         });
-        return;
     }
 
     // FIND USER BY USERNAME

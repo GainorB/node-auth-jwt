@@ -34,7 +34,7 @@ app.all('/*', (req, res, next) => {
 app.disable('x-powered-by');
 
 // CONTROLLERS
-app.use('/users', require('./controllers/usersController'));
+app.use('/users', require('./controllers/usersController')); // USERS
 
 // LANDING PAGE
 app.get('/', (req, res, next) => {
@@ -47,13 +47,6 @@ app.get('/', (req, res, next) => {
 app.set('port', port);
 server.listen(port);
 console.log('Server listening on port ' + port);
-
-// CATCH 404 AND FORWARD TO ERROR HANDLER
-app.use((req, res, next) => {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
 
 // ERROR HANDLER
 app.use((err, req, res, next) => {

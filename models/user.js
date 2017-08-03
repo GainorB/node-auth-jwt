@@ -2,9 +2,11 @@ const db = require('../config/config');
 const bcrypt = require('bcryptjs');
 
 // EMPTY USER OBJECT
+// USED FOR EXPORTING THE METHODS BELOW
 const User = {};
 
 // FIND USER BY USERNAME
+// USED TO LOGIN, FIND A LOGGED IN USERS USERNAME
 User.findByUserName = userName => {
     return db.oneOrNone('SELECT * FROM users WHERE username = $1', userName);
 }
@@ -14,7 +16,7 @@ User.findById = (id, callback) => {
     return db.oneOrNone('SELECT * FROM users WHERE id = $1', id).then(user => { callback(null, user); });
 }
 
-// CREATE A USER
+// CREATE A USER (ADD TO USERS TABLE)
 User.create = user => {
     return db.one(
     `
@@ -25,8 +27,8 @@ User.create = user => {
     ,[user.username, user.password, user.email])
 }
 
-// ADD A USER
 // USE BCRYPT TO ENCRYPT PASSWORD
+// THEN HANDOFF TO CREATE (ABOVE)
 User.addUser = newUser => {
 
     const salt = bcrypt.genSaltSync(10);
