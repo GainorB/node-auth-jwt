@@ -4,7 +4,9 @@
   "description": "Node.js with Express.js using Passport for authentication and JWT",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "node server",
+    "dev": "nodemon server",
+    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min'"
   },
   "author": "Gainor Bostwick",
   "license": "ISC",
@@ -18,10 +20,10 @@
     "jsonwebtoken": "^7.4.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
-    "pg-promise": "^6.3.5"
+    "pg-promise": "^6.3.5",
+    "morgan": "^1.8.2"
   },
   "devDependencies": {
-    "morgan": "^1.8.2",
     "nodemon": "^1.11.0"
   }
 }
