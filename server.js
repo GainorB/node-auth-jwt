@@ -26,10 +26,13 @@ require('./config/passport')(passport);
 
 // CORS
 app.all('/*', (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    next();
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  next();
 });
 
 // SECURITY
@@ -45,8 +48,8 @@ console.log('Server listening on port ' + port);
 
 // ERROR HANDLER
 app.use((err, req, res, next) => {
-    console.log(err);
-    res.status(err.status || 500).send(err.stack);
+  console.log(err);
+  res.status(err.status || 500).send(err.stack);
 });
 
 module.exports = app;
